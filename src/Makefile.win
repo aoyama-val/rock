@@ -1,0 +1,9 @@
+rock.exe : camera.obj common.obj conf.obj createlist.obj display.obj enemy.obj\
+	gameobj.obj  main.obj map.obj math3d.obj md2.obj pcx.obj player.obj \
+	stage.obj texfont.obj texture.obj timer.obj util.obj
+	bcc32 -W -DWIN32 -L../lib -erock.exe *.obj sdl.lib sdlmain.lib glut32.lib
+
+.cpp.obj:
+	bcc32 -c -W -DWIN32 $<
+
+

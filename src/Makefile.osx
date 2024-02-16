@@ -1,0 +1,10 @@
+# brew install sdl sdl_image sdl_mixer sdl_ttf
+# brew install freeglut
+
+../rock.osx: camera.o common.o conf.o createlist.o display.o enemy.o \
+	gameobj.o  main.o map.o math3d.o md2.o pcx.o player.o \
+	stage.o texfont.o texture.o timer.o util.o
+	g++ -W  -framework OpenGL -framework GLUT -L/usr/local/lib -lSDLmain -lSDL -Wl,-framework,Cocoa -o $@ *.o
+
+.cpp.o:
+	g++ `sdl-config --cflags` -c -W $<
